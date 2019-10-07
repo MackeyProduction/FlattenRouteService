@@ -1,7 +1,9 @@
 <?php
 
 use ZendFlattenRoute\Hydrator\FlattenRouteHydrator;
+use ZendFlattenRoute\Hydrator\MethodRouteHydrator;
 use ZendFlattenRoute\Hydrator\TrailingSlashHydrator;
+use ZendFlattenRoute\Model\FlattenChildRoute;
 use ZendFlattenRoute\Service\Composite\FlattenRouteConfiguration;
 use ZendFlattenRoute\Service\FlattenRouteService;
 use ZendFlattenRoute\Hydrator\Helper\FlattenRouteStack;
@@ -17,8 +19,20 @@ $routes = require 'routes.php';
 
 $routeStack = new FlattenRouteStack();
 $hydrator = new FlattenRouteConfiguration();
+$methodRouteHydrator = new MethodRouteHydrator($routeStack);
+$methodRouteHydrator->addChildRoute('sso', 'PUT', new FlattenChildRoute([
+    'type' => 'method',
+    'options' => [
+        'verb' => 'put',
+        'defaults' => [
+            'action' => 'doiPayback',
+        ],
+    ],
+]));
+
 $hydrator->addHydrator(new FlattenRouteHydrator($routeStack));
 $hydrator->addHydrator(new TrailingSlashHydrator($routeStack));
+$hydrator->addHydrator($methodRouteHydrator);
 $service = new FlattenRouteService($hydrator);
 //$service->addOptions("sso", [
 //    'child_routes' => [

@@ -26,6 +26,8 @@ class FlattenRouteStack implements RouteStackInterface
         }
 
         if ($route instanceof FlattenChildRoute) {
+            $foo = $this->routes[$routeName];
+
             return $this->routes[$routeName]['child_routes'] = $route;
         }
 
