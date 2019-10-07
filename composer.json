@@ -1,0 +1,18 @@
+{
+    "name": "local/flatten-route-service",
+    "type": "project",
+    "require": {
+        "zendframework/zend-mvc": "^3.1"
+    },
+    "authors": [
+        {
+            "name": "Til Anheier",
+            "email": "til.anheier@check24.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Anheier\\ZendFlattenRoute\\": "src/"
+        }
+    }
+}
