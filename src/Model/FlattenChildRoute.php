@@ -33,4 +33,12 @@ class FlattenChildRoute implements Route
     {
         return $this->data['options'];
     }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return $this->data;
+    }
 }
