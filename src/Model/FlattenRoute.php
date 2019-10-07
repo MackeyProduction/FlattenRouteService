@@ -43,4 +43,9 @@ class FlattenRoute implements Route
     {
         return $this->data['child_routes'];
     }
+
+    public function toArray()
+    {
+        return $this->data;
+    }
 }

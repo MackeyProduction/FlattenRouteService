@@ -18,7 +18,7 @@ $routes = require 'routes.php';
 $routeStack = new FlattenRouteStack();
 $hydrator = new FlattenRouteConfiguration();
 $hydrator->addHydrator(new FlattenRouteHydrator($routeStack));
-//$hydrator->addHydrator(new TrailingSlashHydrator($routeStack));
+$hydrator->addHydrator(new TrailingSlashHydrator($routeStack));
 $service = new FlattenRouteService($hydrator);
 //$service->addOptions("sso", [
 //    'child_routes' => [
