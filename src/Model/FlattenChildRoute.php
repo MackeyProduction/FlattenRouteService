@@ -9,8 +9,6 @@ class FlattenChildRoute implements Route
     private $data = [
         'type' => null,
         'options' => null,
-        'may_terminate' => false,
-        'child_routes' => null,
     ];
 
     public function __construct(array $data)
@@ -27,11 +25,27 @@ class FlattenChildRoute implements Route
     }
 
     /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->data['type'] = $type;
+    }
+
+    /**
      * @return array
      */
     public function getOptions(): array
     {
         return $this->data['options'];
+    }
+
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options)
+    {
+        $this->data['options'] = $options;
     }
 
     /**

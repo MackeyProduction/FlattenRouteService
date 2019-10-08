@@ -27,6 +27,14 @@ class FlattenRoute implements Route
     }
 
     /**
+     * @param string $type
+     */
+    public function setType(string $type)
+    {
+        $this->data['type'] = $type;
+    }
+
+    /**
      * @return array
      */
     public function getOptions(): array
@@ -34,14 +42,44 @@ class FlattenRoute implements Route
         return $this->data['options'];
     }
 
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options)
+    {
+        $this->data['options'] = $options;
+    }
+
+    /**
+     * @return bool
+     */
     public function getMayTerminate(): bool
     {
         return $this->data['may_terminate'];
     }
 
-    public function getChildRoutes(): array
+    /**
+     * @param bool $mayTerminate
+     */
+    public function setMayTerminate(bool $mayTerminate)
+    {
+        $this->data['may_terminate'] = $mayTerminate;
+    }
+
+    /**
+     * @return FlattenChildRoute
+     */
+    public function getChildRoutes(): FlattenChildRoute
     {
         return $this->data['child_routes'];
+    }
+
+    /**
+     * @param FlattenChildRoute $childRoutes
+     */
+    public function setChildRoutes(FlattenChildRoute $childRoutes)
+    {
+        $this->data['child_routes'] = $childRoutes;
     }
 
     /**

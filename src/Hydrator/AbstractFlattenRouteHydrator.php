@@ -35,7 +35,9 @@ class AbstractFlattenRouteHydrator
     protected function getFlattenRouteStack(array $routes): RouteStackInterface
     {
         // flattening routes
-        $this->flatRoutes($routes);
+        if ($this->routeStack->getRoutes() === null) {
+            $this->flatRoutes($routes);
+        }
 
         return $this->routeStack;
     }
