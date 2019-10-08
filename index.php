@@ -34,27 +34,6 @@ $hydrator->addHydrator(new FlattenRouteHydrator($routeStack));
 $hydrator->addHydrator(new TrailingSlashHydrator($routeStack));
 $hydrator->addHydrator($methodRouteHydrator);
 $service = new FlattenRouteService($hydrator);
-//$service->addOptions("sso", [
-//    'child_routes' => [
-//        'GET' => [
-//            'type' => 'Method::class',
-//            'options' => [
-//                'verb' => 'GET',
-//                'defaults' => [
-//                    'controller' => 'SsoController::class',
-//                ],
-//            ],
-//        ],
-//    ],
-//]);
 $result = $service->getFlattenRoutes($routes);
 
 var_dump($result);
-//
-//$foo = new Zend\Router\Http\TreeRouteStack();
-//$a = $foo->addRoutes($result);
-//
-///** @var \Zend\Router\Http\Part $b */
-//$b = $a->getRoute('sso');
-//
-//var_dump($b);
