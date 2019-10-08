@@ -17,23 +17,10 @@ class FlattenRouteStack implements RouteStackInterface
     /**
      * @param string $routeName
      * @param Route $route
-     * @return Route
      */
     public function addRoute(string $routeName, Route $route)
     {
-        if ($route instanceof FlattenRoute) {
-            return $this->routes[$routeName] = $route;
-        }
-
-        if ($route instanceof FlattenChildRoute) {
-            /** @var FlattenRoute $flattenRoute */
-            $flattenRoute = $this->routes[$routeName];
-            $flattenRoute->setChildRoutes(new FlattenChildRoute($route->toArray()));
-
-            return $this->routes[$routeName] = $flattenRoute;
-        }
-
-        throw new InvalidArgumentException("No instance found.");
+        $this->routes[$routeName] = $route;
     }
 
     /**
