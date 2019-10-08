@@ -4,6 +4,7 @@ namespace ZendFlattenRoute\Hydrator;
 
 use InvalidArgumentException;
 use ZendFlattenRoute\Model\FlattenChildRoute;
+use ZendFlattenRoute\Model\FlattenRoute;
 use ZendFlattenRoute\Model\Route;
 
 class MethodRouteHydrator extends FlattenRouteHydrator implements HydratorInterface
@@ -25,10 +26,10 @@ class MethodRouteHydrator extends FlattenRouteHydrator implements HydratorInterf
 
         $filteredRoutes = array_intersect_key($this->routeStack->getRoutes(), $this->childRoutes);
 
+        /** @var FlattenRoute $route */
         foreach ($filteredRoutes as $key => $route) {
-            foreach ($this->childRoutes[$key] as $cKey => $cRoute) {
-                $routeStack->addRoute($key, $this->childRoutes[$key][$cKey]);
-            }
+            $route->setChildRoutes($this->childRoutes[$key]);
+            $routeStack->addRoute($key, $route);
         }
 
         return $routeStack->getRoutes();
