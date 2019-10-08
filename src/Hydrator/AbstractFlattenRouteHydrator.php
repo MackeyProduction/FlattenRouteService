@@ -76,10 +76,4 @@ class AbstractFlattenRouteHydrator
 
         return [];
     }
-
-    // @TODO: Methode löschen und in passenden hydrator hinzufügen.
-    public function addOptions($routeName, $options = [])
-    {
-        $this->childRoutes[$routeName] = array_merge($this->childRoutes[$routeName], $options);
-    }
 }
