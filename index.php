@@ -29,6 +29,15 @@ $methodRouteHydrator->addChildRoute('sso', 'PUT', new FlattenChildRoute([
         ],
     ],
 ]));
+$methodRouteHydrator->addChildRoute('best-sso', 'GET', new FlattenChildRoute([
+    'type' => 'method',
+    'options' => [
+        'verb' => 'get',
+        'defaults' => [
+            'action' => 'bestSso',
+        ],
+    ],
+]));
 
 $hydrator->addHydrator(new FlattenRouteHydrator($routeStack));
 $hydrator->addHydrator(new TrailingSlashHydrator($routeStack));

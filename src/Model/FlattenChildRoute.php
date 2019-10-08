@@ -9,8 +9,6 @@ class FlattenChildRoute implements Route
     private $data = [
         'type' => null,
         'options' => null,
-        'may_terminate' => false,
-        'child_routes' => null,
     ];
 
     public function __construct(array $data)

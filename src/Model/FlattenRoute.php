@@ -67,17 +67,17 @@ class FlattenRoute implements Route
     }
 
     /**
-     * @return array
+     * @return FlattenChildRoute
      */
-    public function getChildRoutes(): array
+    public function getChildRoutes(): FlattenChildRoute
     {
         return $this->data['child_routes'];
     }
 
     /**
-     * @param array $childRoutes
+     * @param FlattenChildRoute $childRoutes
      */
-    public function setChildRoutes(array $childRoutes)
+    public function setChildRoutes(FlattenChildRoute $childRoutes)
     {
         $this->data['child_routes'] = $childRoutes;
     }
