@@ -8,6 +8,7 @@
 
 namespace ZendFlattenRoute\Service;
 
+use ZendFlattenRoute\Model\FlattenRoute;
 use ZendFlattenRoute\Model\Route;
 use ZendFlattenRoute\Service\Composite\FlattenRouteConfiguration;
 
@@ -35,5 +36,27 @@ class FlattenRouteService
     public function getFlattenRoutes(array $routes)
     {
         return $this->hydrator->hydrate($routes);
+    }
+
+    /**
+     * @param Route[] $routes
+     * @return array
+     */
+    public function flattenRoutesToArray($routes)
+    {
+        $routeArray = [];
+
+        /**
+         * @var string $rKey
+         * @var FlattenRoute $route
+         */
+        foreach ($routes as $rKey => $route) {
+            $routeArray[$rKey] = $route->toArray();
+            foreach ($route->getChildRoutes() as $rcKey => $cRoute) {
+                $routeArray[$rKey]['child_routes'] = $cRoute->toArray();
+            }
+        }
+
+        return $routeArray;
     }
 }
